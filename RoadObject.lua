@@ -1,3 +1,4 @@
+Coordinate = require("Coordinate")
 RoadObject = {}
 
 function RoadObject:new(topLeftX, topLeftY, width, height)
