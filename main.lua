@@ -6,13 +6,13 @@ InGameMemoryMap = require("InGameMemoryMap")
 InGameGrid = nil
 
 function love.load()
-	love.window.setMode(1366, 768, {highdpi = true})
+	love.window.setMode(1366, 768, { highdpi = true})
 
 	--Creaate the ingamegrid
 	InGameGrid = InGameMemoryMap()
 
-	-- --Set it to our default map
-	-- InGameGrid:put()
+	--Set it to our default map
+	InGameGrid:put(RoadObject(500, 500, 10, 400))
 end
 
 function love.update()
@@ -39,15 +39,18 @@ function love.draw()
 	-- love.graphics.rectangle("fill", 750, 300, 50, 500)
 	-- love.graphics.rectangle("line", 750, 300, 50, 500)
 	--Create a road
-	highway404 = RoadObject(500, 500, 10, 500)
-	highway404:draw()
+	-- highway404 = RoadObject(500, 500, 10, 400)
+	-- highway404:draw()
 
-	--Draw the next highway
-	continuedHighway = RoadObject(510, 490, 200, 10)
-	continuedHighway:draw()
+	-- --Draw the next highway
+	-- continuedHighway = RoadObject(510, 490, 200, 10)
+	-- continuedHighway:draw()
 
-	--Connect them
-	RoadHelper.connectRoad(highway404, continuedHighway)
+	-- --Connect them
+	-- RoadHelper.connectRoad(highway404, continuedHighway)
+
+	--Draw the GameGrid
+	
 end
 
 

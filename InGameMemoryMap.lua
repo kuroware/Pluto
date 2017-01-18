@@ -8,11 +8,11 @@ InGameMemoryMap = {}
 InGameMemoryMap.__index = InGameMemoryMap
 
 function InGameMemoryMap.new()
-	local inGameGrid = {}
+	inGameGrid = {}
 	--Set the 1366 x 768 bit mask
-	for i=1,768 do
+	for i=1,love.window.toPixels(768) do
 		inGameGrid[i] = {}
-		for j=1,1366 do
+		for j=1,love.window.toPixels(1366) do
 			inGameGrid[i][j] = 0
 		end
 	end
@@ -25,9 +25,9 @@ end
 function InGameMemoryMap:put(inGameObject)
 	if getmetatable(inGameObject) == RoadObject then
 		--Put it into the map
-		local refI, refJ = RoadObject.referencePoint.x, RoadObject.referencePoint.y
-		for i=refI, refI + RoadObject.height do
-			for j=refJ,refJ+RoadObject.width do
+		local refI, refJ = inGameObject.referencePoint.y, inGameObject.referencePoint.x
+		for i=love.window.toPixels(refI), love.window.toPixels(refI) + inGameObject.height do
+			for j=love.window.toPixels(refJ),love.window.toPixels(refJ) +inGameObject.width do
 				self.grid[i][j] = inGameObject
 			end
 		end
