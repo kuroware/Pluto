@@ -1,12 +1,22 @@
 Coordinate = require("Coordinate")
 RoadObject = require("RoadObject")
 RoadHelper = require("RoadHelper")
+InGameMemoryMap = require("InGameMemoryMap")
+
+InGameGrid = nil
 
 function love.load()
-	love.window.setMode(800, 600, {fullscreen = true, highdpi = true})
+	love.window.setMode(1366, 768, {highdpi = true})
+
+	--Creaate the ingamegrid
+	InGameGrid = InGameMemoryMap:new()
+
+	-- --Set it to our default map
+	-- InGameGrid:put()
 end
 
 function love.update()
+
 end
 
 function love.draw()

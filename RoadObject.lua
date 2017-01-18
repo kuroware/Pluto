@@ -1,7 +1,7 @@
 RoadObject = {}
 
 function RoadObject:new(topLeftX, topLeftY, width, height)
-	local roadObject = { referencePoint = Coordinate:new(topLeftX, topLeftY), width = width, height = height, drawn = false } --Minimal storage
+	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, drawn = false } --Minimal storage
 	self.__index = self
 	return setmetatable(roadObject, self)
 end
