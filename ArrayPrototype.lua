@@ -13,5 +13,13 @@ function ArrayPrototype:push(value)
 	self.length  = self.length + 1
 end
 
+--Print to representable form
+-- function ArrayPrototype.__tostring(arr)
+-- 	string = ""
+-- 	for i=1,arr.length do
+-- 		string = string .. arr.items[i].__tostring()
+-- 	return string
+-- end
+
 setmetatable(ArrayPrototype, { __call = function(_,...) return ArrayPrototype.new() end })
 return ArrayPrototype

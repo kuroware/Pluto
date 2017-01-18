@@ -22,4 +22,6 @@ function GameStatePrototype:put(inGameObject)
 end
 
 setmetatable(GameStatePrototype, { __call = function(_,...) return GameStatePrototype.new(...) end })
-return GameStatePrototype
+--return GameStatePrototype
+AppGameState = GameStatePrototype.new()
+return AppGameState

@@ -10,7 +10,6 @@ end
 --Draws the road
 function RoadObject:draw()
 	love.graphics.setColor( 189, 195, 199 )
-	print("Drawing ")
 	love.graphics.rectangle("fill", self.referencePoint.x, self.referencePoint.y, self.width, self.height)
 	love.graphics.rectangle("line", self.referencePoint.x, self.referencePoint.y, self.width, self.height) --Antialias
 end
