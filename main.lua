@@ -1,14 +1,14 @@
 Coordinate = require("Coordinate")
 RoadObject = require("RoadObject")
 RoadHelper = require("RoadHelper")
-AppGameState = require("GameStatePrototype")
+GameStatePrototype = require("GameStatePrototype")
 
 
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
 
 	--Creaate the ingamegrid
-	-- AppGameState = GameStatePrototype()
+	AppGameState = GameStatePrototype.getInstance()
 	--Set it to our default map
 	AppGameState:put(RoadObject(500, 500, 10, 400))
 	AppGameState:put(RoadObject(510, 490, 200, 10))

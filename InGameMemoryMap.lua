@@ -9,12 +9,10 @@ InGameMemoryMap.__index = InGameMemoryMap
 
 function InGameMemoryMap.new()
 	inGameGrid = {}
-	print("instantiating")
-	print(love.window.toPixels(768))
 	--Set the 1366 x 768 bit mask
-	for i=1,1536 do
+	for i=1,love.window.toPixels(768) do
 		inGameGrid[i] = {}
-		for j=1,2732 do
+		for j=1,love.window.toPixels(1366) do
 			inGameGrid[i][j] = 0
 		end
 	end
