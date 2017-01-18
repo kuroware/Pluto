@@ -5,3 +5,5 @@ GameGrid = {}
 GameGrid.__index = GameGrid
 
 function GameGrid.new()
+	local gameGridObject = {}
+	gameGridObject.
