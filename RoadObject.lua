@@ -3,18 +3,16 @@ RoadObject = {}
 RoadObject.__index = RoadObject
 
 function RoadObject.new(topLeftX, topLeftY, width, height)
-	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, drawn = false } --Minimal storage
+	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height } --Minimal storage
 	return setmetatable(roadObject, RoadObject)
 end
 
 --Draws the road
 function RoadObject:draw()
-	if not self.drawn then
-		--print("Drawing " .. self:__str())
-		love.graphics.rectangle("fill", self.referencePoint.x, self.referencePoint.y, self.width, self.height)
-		love.graphics.rectangle("line", self.referencePoint.x, self.referencePoint.y, self.width, self.height) --Antialias
-		self.drawn = true
-	end
+	love.graphics.setColor( 189, 195, 199 )
+	print("Drawing ")
+	love.graphics.rectangle("fill", self.referencePoint.x, self.referencePoint.y, self.width, self.height)
+	love.graphics.rectangle("line", self.referencePoint.x, self.referencePoint.y, self.width, self.height) --Antialias
 end
 
 --A string method for the RoadObject that prints out useful information
