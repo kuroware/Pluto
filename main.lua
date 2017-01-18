@@ -9,7 +9,7 @@ function love.load()
 	love.window.setMode(1366, 768, {highdpi = true})
 
 	--Creaate the ingamegrid
-	InGameGrid = InGameMemoryMap:new()
+	InGameGrid = InGameMemoryMap()
 
 	-- --Set it to our default map
 	-- InGameGrid:put()
@@ -39,11 +39,11 @@ function love.draw()
 	-- love.graphics.rectangle("fill", 750, 300, 50, 500)
 	-- love.graphics.rectangle("line", 750, 300, 50, 500)
 	--Create a road
-	highway404 = RoadObject:new(500, 500, 10, 500)
+	highway404 = RoadObject(500, 500, 10, 500)
 	highway404:draw()
 
 	--Draw the next highway
-	continuedHighway = RoadObject:new(510, 490, 200, 10)
+	continuedHighway = RoadObject(510, 490, 200, 10)
 	continuedHighway:draw()
 
 	--Connect them

@@ -1,10 +1,10 @@
 Coordinate = require("Coordinate")
 RoadObject = {}
+RoadObject.__index = RoadObject
 
-function RoadObject:new(topLeftX, topLeftY, width, height)
+function RoadObject.new(topLeftX, topLeftY, width, height)
 	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, drawn = false } --Minimal storage
-	self.__index = self
-	return setmetatable(roadObject, self)
+	return setmetatable(roadObject, RoadObject)
 end
 
 --Draws the road
@@ -21,5 +21,8 @@ end
 function RoadObject:__str()
 	return "RoadObject at coordinate " .. self.referencePoint:__str()
 end
+
+
+setmetatable(RoadObject, { __call = function(_, ...) return RoadObject.new(...) end })
 
 return RoadObject

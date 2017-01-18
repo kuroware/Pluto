@@ -1,3 +1,6 @@
+--Some requires in order to compare
+RoadObject = require("RoadObject")
+
 --The in game memory map used to compare the hidden map inside the code and the rendered map, also for collision checking
 --Should be used as a singelton
 
@@ -15,12 +18,20 @@ function InGameMemoryMap.new()
 	end
 
 	--Set its metatable
-	return setmetatable(inGameGrid, InGameMemoryMap)
+	return setmetatable({ grid = inGameGrid }, InGameMemoryMap)
 end
 
 --Put some GameObject into the InGameMemoryMap
-function InGameMemoryMap:put()
-
+function InGameMemoryMap:put(inGameObject)
+	if getmetatable(inGameObject) == RoadObject then
+		--Put it into the map
+		local refI, refJ = RoadObject.referencePoint.x, RoadObject.referencePoint.y
+		for i=refI, refI + RoadObject.height do
+			for j=refJ,refJ+RoadObject.width do
+				self.grid[i][j] = inGameObject
+			end
+		end
+	end
 end
 
 setmetatable(InGameMemoryMap, { __call = function(_, ...) return InGameMemoryMap.new(...) end})
