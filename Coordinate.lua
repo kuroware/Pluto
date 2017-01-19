@@ -23,5 +23,6 @@ function Coordinate.__tostring(coordinate)
 	return "< " .. coordinate.x .. ", " .. coordinate.y .. " >"
 end
 
+
 setmetatable(Coordinate, { __call = function(_, ...) return Coordinate.new(...) end })
 return Coordinate

@@ -1,8 +1,10 @@
 Coordinate = require("Coordinate")
 RoadObject = require("RoadObject")
-RoadHelper = require("RoadHelper")
+RoadHelper = require "RoadHelper"
 GameStatePrototype = require("GameStatePrototype")
+SingleCurveRoadObject = require "SingleCurveRoadObject"
 
+AppGameState = nil --By default, this is the global singleton
 
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
@@ -10,8 +12,19 @@ function love.load()
 	--Creaate the ingamegrid
 	AppGameState = GameStatePrototype.getInstance()
 	--Set it to our default map
-	AppGameState:put(RoadObject(500, 500, 10, 400))
-	AppGameState:put(RoadObject(510, 490, 200, 10))
+
+	local highwaySectionOne, highwaySectionTwo = RoadObject(500, 500, 10, 400), RoadObject(510, 490, 200, 10)
+	AppGameState:put(highwaySectionOne)
+	AppGameState:put(highwaySectionTwo)
+
+	--Connect those two roads
+	local arcConnecting = RoadHelper.arcConnectRoads(highwaySectionOne, highwaySectionTwo)
+	print(arcConnecting)
+
+	--Put the arc to draw
+	AppGameState:put(arcConnecting)
+
+	local arcHighway = SingleCurveRoadObject(Coordinate(100, 100), Coordinate(300, 400))
 end
 
 function love.update()

@@ -14,6 +14,8 @@ function RoadObject:draw()
 	love.graphics.rectangle("line", self.referencePoint.x, self.referencePoint.y, self.width, self.height) --Antialias
 end
 
+
+
 --A string method for the RoadObject that prints out useful information
 function RoadObject:__str()
 	return "RoadObject at coordinate " .. self.referencePoint:__str()

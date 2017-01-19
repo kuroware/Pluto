@@ -22,23 +22,11 @@ function InGameMemoryMap.new()
 end
 
 
-printed = false
 --Put some GameObject into the InGameMemoryMap
 function InGameMemoryMap:put(inGameObject)
 	if getmetatable(inGameObject) == RoadObject then
 		--Put it into the map
 		local refI, refJ = inGameObject.referencePoint.y, inGameObject.referencePoint.x
-		if not printed then
-			print(refI)
-			print(refJ)
-			print(love.window.toPixels(refI) + inGameObject.height)
-			print(love.window.toPixels(refJ) +inGameObject.width)
-			print(love.window.toPixels(768))
-			print(love.window.toPixels(1366))
-			printed = true
-			print(self.grid[769])
-		end
-
 		for i=love.window.toPixels(refI), love.window.toPixels(refI) + inGameObject.height do
 			for j=love.window.toPixels(refJ),love.window.toPixels(refJ) +inGameObject.width do
 				self.grid[i][j] = inGameObject
