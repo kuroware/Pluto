@@ -12,6 +12,7 @@ end
 -- Draw the road arc
 function RoadArcObject:draw()
 	love.graphics.arc("fill", self.referencePoint.x, self.referencePoint.y, 10, self.beginningAngle, self.endingAngle, 30)
+	love.graphics.arc("line", self.referencePoint.x, self.referencePoint.y, 10, self.beginningAngle, self.endingAngle, 30)
 end
 
 --Overriding the metatable method for the string representation

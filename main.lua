@@ -9,23 +9,18 @@ AppGameState = nil --By default, this is the global singleton
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
 
-	--Creaate the ingamegrid
+	--Create the ingamegrid
 	AppGameState = GameStatePrototype.getInstance()
 	--Set it to our default map
 
-	-- local highwaySectionOne, highwaySectionTwo = RoadObject(500, 500, 10, 400), RoadObject(510, 490, 200, 10)
-	-- AppGameState:put(highwaySectionOne)
-	-- AppGameState:put(highwaySectionTwo)
+	-- local arcHighway = SingleCurveRoadObject(Coordinate(100, 100), Coordinate(300, 400))
+	-- AppGameState:put(arcHighway)
 
-	-- --Connect those two roads
-	-- local arcConnecting = RoadHelper.arcConnectRoads(highwaySectionOne, highwaySectionTwo)
-	-- print(arcConnecting)
+	-- local arcHighway2 = SingleCurveRoadObject(Coordinate(500, 500), Coordinate(600, 400))
+	-- AppGameState:put(arcHighway2)
 
-	-- --Put the arc to draw
-	-- AppGameState:put(arcConnecting)
-
-	local arcHighway = SingleCurveRoadObject(Coordinate(100, 100), Coordinate(300, 400))
-	AppGameState:put(arcHighway)
+	local arcHighway3 = SingleCurveRoadObject(Coordinate(300, 300), Coordinate(500, 500), "concave")
+	AppGameState:put(arcHighway3)
 end
 
 function love.update()
@@ -33,39 +28,12 @@ function love.update()
 end
 
 function love.draw()
-	-- love.graphics.setColor( 189, 195, 199 )
-	-- love.graphics.arc( "fill", 400, 300, 10, -math.pi, -math.pi/2)
-	-- love.graphics.arc( "line", 400, 300, 10, -math.pi, -math.pi/2) --Anti-aliasing
-
-	-- --Draw the recentalge for the road leading up to it
-	-- love.graphics.rectangle("fill", 390, 300, 11, 500)
-	-- love.graphics.rectangle("line", 390, 300, 10, 500)
-
-	-- -- --Draw the rectangle leading out of the arc
-	-- love.graphics.rectangle("fill", 400, 290, 500, 10)
-
-
-	-- love.graphics.arc( "fill", 800, 300, 50, -math.pi, -math.pi/2)
-	-- love.graphics.arc( "line", 800, 300, 50, -math.pi, -math.pi/2) --Anti-aliasing
-
-	-- --Draw the recentalge for the road leading up to it
-	-- love.graphics.rectangle("fill", 750, 300, 50, 500)
-	-- love.graphics.rectangle("line", 750, 300, 50, 500)
-	--Create a road
-	-- highway404 = RoadObject(500, 500, 10, 400)
-	-- highway404:draw()
-
-	-- --Draw the next highway
-	-- continuedHighway = RoadObject(510, 490, 200, 10)
-	-- continuedHighway:draw()
-
-	-- --Connect them
-	-- RoadHelper.connectRoad(highway404, continuedHighway)
-
 	--Draw the GameGrid by iterating theough the AppGameState
 	for i=1,AppGameState.drawArray.length do
 		AppGameState.drawArray.items[i]:draw()
 	end
+
+	-- love.graphics.rectangle("fill", 1000, 1000, 10, 500)
 
 end
 
