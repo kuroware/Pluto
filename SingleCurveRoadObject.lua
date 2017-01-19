@@ -21,7 +21,6 @@ function SingleCurveRoadObject.new(beginningCoord, endingCoord)
 
 	--Attempt to construct the RoadObject by doing casework
 	local referenceVector = beginningCoord - endingCoord
-
 	--Do some case work, there are 4 cases
 	if referenceVector.x < 0 and referenceVector.y < 0 then
 		--Case 1, the beginningCoord is from the left and endingCoord is below the beginningCoord like so
@@ -39,7 +38,7 @@ function SingleCurveRoadObject.new(beginningCoord, endingCoord)
 		road2 = RoadObject(beginningCoord.x + math.abs(referenceVector.x), beginningCoord.y + DEFAULT_ROAD_WIDTH, DEFAULT_ROAD_WIDTH, math.abs(beginningCoord.y + DEFAULT_ROAD_WIDTH - endingCoord.y))
 
 		--Create the arc
-		connectingArc = RoadArcObject(beginningCoord.x + math.abs(referenceVector.x), beginningCoord.y + 10, 0, math.pi/2)
+		connectingArc = RoadArcObject(beginningCoord.x + math.abs(referenceVector.x), beginningCoord.y + 10, 0, -math.pi/2)
 	end
 
 	--In this constructor, we try to figure out what the arc is, we get this by calling RoadHelper

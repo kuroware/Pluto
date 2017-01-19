@@ -13,18 +13,19 @@ function love.load()
 	AppGameState = GameStatePrototype.getInstance()
 	--Set it to our default map
 
-	local highwaySectionOne, highwaySectionTwo = RoadObject(500, 500, 10, 400), RoadObject(510, 490, 200, 10)
-	AppGameState:put(highwaySectionOne)
-	AppGameState:put(highwaySectionTwo)
+	-- local highwaySectionOne, highwaySectionTwo = RoadObject(500, 500, 10, 400), RoadObject(510, 490, 200, 10)
+	-- AppGameState:put(highwaySectionOne)
+	-- AppGameState:put(highwaySectionTwo)
 
-	--Connect those two roads
-	local arcConnecting = RoadHelper.arcConnectRoads(highwaySectionOne, highwaySectionTwo)
-	print(arcConnecting)
+	-- --Connect those two roads
+	-- local arcConnecting = RoadHelper.arcConnectRoads(highwaySectionOne, highwaySectionTwo)
+	-- print(arcConnecting)
 
-	--Put the arc to draw
-	AppGameState:put(arcConnecting)
+	-- --Put the arc to draw
+	-- AppGameState:put(arcConnecting)
 
 	local arcHighway = SingleCurveRoadObject(Coordinate(100, 100), Coordinate(300, 400))
+	AppGameState:put(arcHighway)
 end
 
 function love.update()

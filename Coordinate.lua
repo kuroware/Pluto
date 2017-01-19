@@ -13,6 +13,12 @@ function Coordinate.__add(p1, p2)
 	return result
 end
 
+--R2 arithemtic for subtracting
+function Coordinate.__sub(p1, p2)
+	local result = Coordinate(p1.x - p2.x, p1.y - p2.y)
+	return result
+end
+
 --Overiding the eq behaviour for more desirable results
 -- Two points are equal if x1 == x2 and y1 == y2
 function Coordinate.__eq(p1, p2)
