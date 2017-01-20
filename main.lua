@@ -19,8 +19,14 @@ function love.load()
 	-- local arcHighway2 = SingleCurveRoadObject(Coordinate(500, 500), Coordinate(600, 400))
 	-- AppGameState:put(arcHighway2)
 
-	local arcHighway3 = SingleCurveRoadObject(Coordinate(300, 300), Coordinate(500, 500), "concave")
-	AppGameState:put(arcHighway3)
+	local highwayComponents = {
+		SingleCurveRoadObject(Coordinate(300, 300), Coordinate(400, 200), "concave"),
+		SingleCurveRoadObject(Coordinate(400, 200), Coordinate(600, 400), "concave")
+	}
+
+	for index, segment in pairs(highwayComponents) do
+		AppGameState:put(segment)
+	end
 end
 
 function love.update()
