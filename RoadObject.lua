@@ -7,7 +7,7 @@ RoadObject.__index = RoadObject
 -- @parm topLeftY
 -- @param color, the color of the road, a array of { r, g, b }
 function RoadObject.new(topLeftX, topLeftY, width, height, color)
-	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, color = color or {189, 195, 199}} --Minimal storage
+	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, color = color or { 125, 129, 130}} --Minimal storage
 	return setmetatable(roadObject, RoadObject)
 end
 
