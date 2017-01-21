@@ -20,8 +20,10 @@ function love.load()
 	-- AppGameState:put(arcHighway2)
 
 	local highwayComponents = {
-		SingleCurveRoadObject(Coordinate(300, 300), Coordinate(400, 200), "concave"),
-		SingleCurveRoadObject(Coordinate(400, 200), Coordinate(600, 400), "concave")
+		-- RoadObject(0, 700, 2000, 10),
+		-- SingleCurveRoadObject(Coordinate(600, 1200), Coordinate(700, 200), "concave"),
+		-- SingleCurveRoadObject(Coordinate(700, 200), Coordinate(900, 1200), "concave"),
+		RoadObject(1400, 100, 20, 900, { 125, 129, 130} )
 	}
 
 	for index, segment in pairs(highwayComponents) do
@@ -32,7 +34,6 @@ end
 function love.update()
 
 end
-
 function love.draw()
 	--Draw the GameGrid by iterating theough the AppGameState
 	for i=1,AppGameState.drawArray.length do

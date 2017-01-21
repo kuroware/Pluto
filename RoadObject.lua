@@ -2,14 +2,18 @@ Coordinate = require("Coordinate")
 RoadObject = {}
 RoadObject.__index = RoadObject
 
-function RoadObject.new(topLeftX, topLeftY, width, height)
-	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height } --Minimal storage
+--Constructor of the road object
+--@param topLeftX - int, the top left 
+-- @parm topLeftY
+-- @param color, the color of the road, a array of { r, g, b }
+function RoadObject.new(topLeftX, topLeftY, width, height, color)
+	local roadObject = { referencePoint = Coordinate(topLeftX, topLeftY), width = width, height = height, color = color or {189, 195, 199}} --Minimal storage
 	return setmetatable(roadObject, RoadObject)
 end
 
 --Draws the road
 function RoadObject:draw()
-	love.graphics.setColor( 189, 195, 199 )
+	love.graphics.setColor(self.color[1], self.color[2], self.color[3])
 	love.graphics.rectangle("fill", self.referencePoint.x, self.referencePoint.y, self.width, self.height)
 	love.graphics.rectangle("line", self.referencePoint.x, self.referencePoint.y, self.width, self.height) --Antialias
 end
