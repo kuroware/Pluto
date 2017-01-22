@@ -31,8 +31,13 @@ function GreenDotPlayer:lastClicked()
 	end
 end
 
+function GreenDotPlayer.__tostring(obj)
+	return "GreenDotPlayer at <" .. obj.currentPosition.x .. ", " .. obj.currentPosition.y .. ">"
+end
+
 function basicmove(gbI)
 	oldwaypoint = waypoint
+	print(players[gbI])
 	waypoint = players[gbI]:lastClicked()
 	-- Subtract previous vector
 	g,h = players[gbI].currentPosition.x, players[gbI].currentPosition.y
@@ -50,7 +55,7 @@ function basicmove(gbI)
 	-- Both are currentPosition
 	if (waypoint - previous.currentPosition):distance() <= 8 then
 		print("Close enough")
-		return 0
+		return 2
 	end
 	calculate = waypoint - previous.currentPosition
 	distance = math.sqrt(waypoint.x^2 + waypoint.y^2)
@@ -59,7 +64,6 @@ function basicmove(gbI)
 	x = x + unx
 	y = y + uny
 	players[gbI]:setPosition(x,y)
-	return 1
 end
 
 setmetatable(GreenDotPlayer, { __call = function(_,...) return GreenDotPlayer.new(...) end })

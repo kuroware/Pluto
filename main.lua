@@ -46,9 +46,9 @@ function love.load()
 
 	players = {
 		GreenDotPlayer(x, y),
-		GreenDotPlayer(x + 400, y + 123),
+		GreenDotPlayer(x + 300, y + 123),
 		GreenDotPlayer(x + 290, y + 189),
-		GreenDotPlayer(x + 421, y + 422)
+		GreenDotPlayer(x + 121, y + 422)
 	}
 	for i=1,4 do
 		AppGameState:put(players[i])
@@ -57,18 +57,27 @@ end
 
 function love.update()
 	AppGameState:put(player)
+	DotsinRect()
+	-- Print the array
+	for index, spot in pairs(arrInside) do
+		print("in array")
+		print(spot)
+	end
 	-- Check if the rectangle drawn reaches the dots
-	if selected then
-		for index, dot in pairs(arrInside) do
-			while(1) do
-				if basicmove(index) == 0 then
-					break;
+	for index, dot in pairs(arrInside) do
+		while(1) do
+			saved = basicmove(index)
+			if saved == 2 then
+				break
 			end
 		end
 	end
-	else
-		DotsinRect()
-	end
+		selected = false
+		arrInside = {}
+		for index, spot in pairs(arrInside) do
+			print("in array")
+			print(spot)
+		end
 end
 
 function love.draw()

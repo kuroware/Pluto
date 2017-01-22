@@ -15,6 +15,7 @@ end
 
 function love.mousemoved(x,y,dx,dy)
 	if(down == true) then
+		-- makes newx and newy the 
 		newx = newx + dx
 		newy = newy + dy
 	end
@@ -29,47 +30,46 @@ insidelen = 0
 
 -- deals with initialx, initialy, newx, newy
 function DotsinRect()
-	arrInside = {}
 	selected = false
-	for i = 1,4 do
+	for index, dot in pairs(arrInside) do
 		-- quadrant 1
 		if newx > 0 and newy > 0 then
-			if players[i].currentPosition.x > initialx and 
-				players[i].currentPosition.x < initialx + newx and
-				players[i].currentPosition.y < initialy + newy and
-				players[i].currentPosition.y < newy then
+			if players[index].currentPosition.x > initialx and 
+				players[index].currentPosition.x < initialx + newx and
+				players[index].currentPosition.y < initialy + newy and
+				players[index].currentPosition.y > initialy then
 					insidelen = insidelen + 1
-					arrInside[insidelen] = players[i]
+					arrInside[insidelen] = players[index]
 					selected = true
 			end
 		-- quadrant 2
 		elseif newx > 0 and newy < 0 then
-			if players[i].currentPosition.x > initialx and 
-				players[i].currentPosition.x < initialx + newx and
-				players[i].currentPosition.y < initialy and
-				players[i].currentPosition.y > initialy - newy then
+			if players[index].currentPosition.x > initialx and 
+				players[index].currentPosition.x < initialx + newx and
+				players[index].currentPosition.y < initialy and
+				players[index].currentPosition.y > initialy - newy then
 					insidelen = insidelen + 1
-					arrInside[insidelen] = players[i]
+					arrInside[insidelen] = players[index]
 					selected = true
 			end
 		-- quadrant 3
 		elseif newx < 0 and newy < 0 then
-			if players[i].currentPosition.x < initialx and 
-				players[i].currentPosition.x > initialx - newx and
-				players[i].currentPosition.y < initialy and
-				players[i].currentPosition.y > initialy - newy then
+			if players[index].currentPosition.x < initialx and 
+				players[index].currentPosition.x > initialx - newx and
+				players[index].currentPosition.y < initialy and
+				players[index].currentPosition.y > initialy - newy then
 					insidelen = insidelen + 1
-					arrInside[insidelen] = players[i]
+					arrInside[insidelen] = players[index]
 					selected = true
-			end
+			end	 
 		-- quadrant 4
 		elseif newx < 0 and newy > 0 then
-			if players[i].currentPosition.x < initialx and 
-				players[i].currentPosition.x > initialx - newx and
-				players[i].currentPosition.y > initialy and
-				players[i].currentPosition.y < initaily + newy then
+			if players[index].currentPosition.x < initialx and 
+				players[index].currentPosition.x > initialx - newx and
+				players[index].currentPosition.y > initialy and
+				players[index].currentPosition.y < initialy + newy then
 					insidelen = insidelen + 1
-					arrInside[insidelen] = players[i]
+					arrInside[insidelen] = players[index]
 					selected = true
 			end
 		end
