@@ -7,6 +7,10 @@ function Coordinate.new(x, y)
 	return setmetatable(coordObject, Coordinate)
 end
 
+function Coordinate:distance()
+	return math.sqrt(self.x^2 + self.y^2)
+end
+
 --R2 arithmetic
 function Coordinate.__add(p1, p2)
 	local result = Coordinate(p1.x + p2.x, p1.y + p2.y)
@@ -29,6 +33,10 @@ function Coordinate.__tostring(coordinate)
 	return "< " .. coordinate.x .. ", " .. coordinate.y .. " >"
 end
 
+--Overriiding for the multiplication method
+function Coordinate.__mul(scalar, coordinate)
+	return Coordinate(coordinate.x * scalar, coordinate.y * scalar)
+end
 
 setmetatable(Coordinate, { __call = function(_, ...) return Coordinate.new(...) end })
 return Coordinate

@@ -4,8 +4,8 @@ RoadHelper = require "RoadHelper"
 GameStatePrototype = require("GameStatePrototype")
 SingleCurveRoadObject = require "SingleCurveRoadObject"
 GreenDotPlayer = require "GreenDotPlayer"
-
 AppGameState = nil --By default, this is the global singleton
+DotPlayer = require "DotPlayer"
 
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
@@ -34,23 +34,15 @@ function love.load()
 		RoadObject(710, 700, 200, 10)
 	}
 
+	player = DotPlayer.new(1, 1)
+
 	for index, segment in pairs(highwayComponents) do
 		AppGameState:put(segment)
 	end
-
-	x =1
-	y =1
-
-	players = {
-		GreenDotPlayer(x, y)
-	}
-	AppGameState:put(players[1])
+	AppGameState:put(player)
 end
 
 function love.update()
-	x = x + 1
-	y = y+1
-	players[1]:setPosition(x, y)
 end
 
 
