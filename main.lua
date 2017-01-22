@@ -4,8 +4,8 @@ RoadHelper = require "RoadHelper"
 GameStatePrototype = require("GameStatePrototype")
 SingleCurveRoadObject = require "SingleCurveRoadObject"
 GreenDotPlayer = require "GreenDotPlayer"
-
 AppGameState = nil --By default, this is the global singleton
+DotPlayer = require "DotPlayer"
 
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
@@ -34,6 +34,8 @@ function love.load()
 		RoadObject(710, 700, 200, 10)
 	}
 
+	player = DotPlayer.new(1, 1)
+
 	for index, segment in pairs(highwayComponents) do
 		AppGameState:put(segment)
 	end
@@ -49,8 +51,8 @@ end
 
 function love.update()
 	basicmove()
+	AppGameState:put(player)
 end
-
 
 function love.draw()
 	--Draw the GameGrid by iterating theough the AppGameState
