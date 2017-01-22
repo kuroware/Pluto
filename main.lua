@@ -6,6 +6,7 @@ SingleCurveRoadObject = require "SingleCurveRoadObject"
 GreenDotPlayer = require "GreenDotPlayer"
 AppGameState = nil --By default, this is the global singleton
 DotPlayer = require "DotPlayer"
+SquareSelect = require "SquareSelect"
 
 function love.load()
 	love.window.setMode(1366, 768, { highdpi = true})
@@ -40,13 +41,18 @@ function love.load()
 		AppGameState:put(segment)
 	end
 
-	x = 7
-	y = 7
+	x = 12
+	y = 12
 
 	players = {
-		GreenDotPlayer(x, y)
+		GreenDotPlayer(x, y),
+		GreenDotPlayer(x + 400, y + 123),
+		GreenDotPlayer(x + 290, y + 123),
+		GreenDotPlayer(x + 421, y + 422)
 	}
-	AppGameState:put(players[1])
+	for i=1,4 do
+		AppGameState:put(players[i])
+	end
 end
 
 function love.update()
@@ -60,7 +66,12 @@ function love.draw()
 		AppGameState.drawArray.items[i]:draw()
 	end
 	-- love.graphics.rectangle("fill", 1000, 1000, 10, 500)
-
+	-- Draw the selection rectangle
+	if(down == true) then
+		love.graphics.rectangle("line", initialx, initialy, newx, newy)
+	end
+	--
+	print(down)
 end
 
 

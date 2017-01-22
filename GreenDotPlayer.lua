@@ -48,8 +48,6 @@ function basicmove()
 		end
 	end
 	-- Both are currentPosition
-	print(waypoint)
-	print(previous.currentPosition)
 	if (waypoint - previous.currentPosition):distance() <= 8 then
 		print("Close enough")
 		return 0
