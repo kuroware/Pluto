@@ -22,6 +22,47 @@ function GreenDotPlayer:draw()
 	love.graphics.circle("line", self.currentPosition.x, self.currentPosition.y, 5)
 end
 
+function GreenDotPlayer:lastClicked()
+	if love.mouse.isDown(1) then
+		d, e = love.mouse.getPosition( )
+		a = GreenDotPlayer.new(d,e)
+		a = a.currentPosition
+		return a
+	end
+end
+
+function basicmove()
+	oldwaypoint = waypoint
+	waypoint = players[1]:lastClicked()
+	-- Subtract previous vector
+	g,h = players[1].currentPosition.x, players[1].currentPosition.y
+	previous = GreenDotPlayer.new(g,h)
+	
+	-- Can't find waypoint
+	if waypoint == nil then
+		-- Assign old waypoint as waypoint
+		waypoint = oldwaypoint
+		-- If no existing waypoint, then do not move
+		if oldwaypoint == nil then
+			return 0
+		end
+	end
+	-- Both are currentPosition
+	print(waypoint)
+	print(previous.currentPosition)
+	if (waypoint - previous.currentPosition):distance() <= 8 then
+		print("Close enough")
+		return 0
+	end
+	calculate = waypoint - previous.currentPosition
+	distance = math.sqrt(waypoint.x^2 + waypoint.y^2)
+	unx = calculate.x / distance * 2
+	uny = calculate.y / distance * 2
+	x = x + unx
+	y = y + uny
+	players[1]:setPosition(x,y)
+end
+
 setmetatable(GreenDotPlayer, { __call = function(_,...) return GreenDotPlayer.new(...) end })
 return GreenDotPlayer
 

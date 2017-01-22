@@ -38,8 +38,8 @@ function love.load()
 		AppGameState:put(segment)
 	end
 
-	x =1
-	y =1
+	x = 7
+	y = 7
 
 	players = {
 		GreenDotPlayer(x, y)
@@ -48,9 +48,7 @@ function love.load()
 end
 
 function love.update()
-	x = x + 1
-	y = y+1
-	players[1]:setPosition(x, y)
+	basicmove()
 end
 
 
