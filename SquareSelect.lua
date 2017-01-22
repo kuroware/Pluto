@@ -10,7 +10,6 @@ function love.mousepressed(ix, iy, button)
 	initialy = iy
 	newx = 0
 	newy = 0
-	print("initial at ", initialx, " ", initialy)
 end
 
 function love.mousemoved(x,y,dx,dy)
@@ -22,5 +21,51 @@ end
 
 function love.mousereleased(ox, oy, button)
 	down = false
-	print("Mouse Released", button, "at", ox, oy)
+end
+
+arrInside = {}
+insidelen = 0
+
+-- deals with initialx, initialy, newx, newy
+function DotsinRect()
+	arrInside = {}
+	for i = 1,4 do
+		-- quadrant 1
+		if newx > 0 and newy > 0 then
+			if players[i].currentPosition.x > initialx and 
+				players[i].currentPosition.x < newx and
+				players[i].currentPosition.y > initialy and
+				players[i].currentPosition.y < newy then
+					insidelen = insidelen + 1
+					arrInside[insidelen] = players[i]
+			end
+		-- quadrant 2
+		elseif newx > 0 and newy < 0 then
+			if players[i].currentPosition.x > initialx and 
+				players[i].currentPosition.x < newx and
+				players[i].currentPosition.y < initialy and
+				players[i].currentPosition.y > newy then
+					insidelen = insidelen + 1
+					arrInside[insidelen] = players[i]
+			end
+		-- quadrant 3
+		elseif newx < 0 and newy < 0 then
+			if players[i].currentPosition.x < initialx and 
+				players[i].currentPosition.x > newx and
+				players[i].currentPosition.y < initialy and
+				players[i].currentPosition.y > newy then
+					insidelen = insidelen + 1
+					arrInside[insidelen] = players[i]
+			end
+		-- quadrant 4
+		elseif newx < 0 and newy > 0 then
+			if players[i].currentPosition.x < initialx and 
+				players[i].currentPosition.x > newx and
+				players[i].currentPosition.y > initialy and
+				players[i].currentPosition.y < newy then
+					insidelen = insidelen + 1
+					arrInside[insidelen] = players[i]
+			end
+		end
+	end
 end

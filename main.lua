@@ -70,8 +70,9 @@ function love.draw()
 	if(down == true) then
 		love.graphics.rectangle("line", initialx, initialy, newx, newy)
 	end
-	--
-	print(down)
+	-- Check if the rectangle drawn reaches the dots
+	DotsinRect()
+	print(arrInside[1])
 end
 
 
