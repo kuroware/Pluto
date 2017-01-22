@@ -31,11 +31,11 @@ function GreenDotPlayer:lastClicked()
 	end
 end
 
-function basicmove()
+function basicmove(gbI)
 	oldwaypoint = waypoint
-	waypoint = players[1]:lastClicked()
+	waypoint = players[gbI]:lastClicked()
 	-- Subtract previous vector
-	g,h = players[1].currentPosition.x, players[1].currentPosition.y
+	g,h = players[gbI].currentPosition.x, players[gbI].currentPosition.y
 	previous = GreenDotPlayer.new(g,h)
 	
 	-- Can't find waypoint
@@ -58,7 +58,8 @@ function basicmove()
 	uny = calculate.y / distance * 2
 	x = x + unx
 	y = y + uny
-	players[1]:setPosition(x,y)
+	players[gbI]:setPosition(x,y)
+	return 1
 end
 
 setmetatable(GreenDotPlayer, { __call = function(_,...) return GreenDotPlayer.new(...) end })

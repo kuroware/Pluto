@@ -3,6 +3,7 @@ initialy = 0
 newx = 0
 newy = 0
 down = false
+selected = false
 
 function love.mousepressed(ix, iy, button)
 	down = true
@@ -29,42 +30,47 @@ insidelen = 0
 -- deals with initialx, initialy, newx, newy
 function DotsinRect()
 	arrInside = {}
+	selected = false
 	for i = 1,4 do
 		-- quadrant 1
 		if newx > 0 and newy > 0 then
 			if players[i].currentPosition.x > initialx and 
-				players[i].currentPosition.x < newx and
-				players[i].currentPosition.y > initialy and
+				players[i].currentPosition.x < initialx + newx and
+				players[i].currentPosition.y < initialy + newy and
 				players[i].currentPosition.y < newy then
 					insidelen = insidelen + 1
 					arrInside[insidelen] = players[i]
+					selected = true
 			end
 		-- quadrant 2
 		elseif newx > 0 and newy < 0 then
 			if players[i].currentPosition.x > initialx and 
-				players[i].currentPosition.x < newx and
+				players[i].currentPosition.x < initialx + newx and
 				players[i].currentPosition.y < initialy and
-				players[i].currentPosition.y > newy then
+				players[i].currentPosition.y > initialy - newy then
 					insidelen = insidelen + 1
 					arrInside[insidelen] = players[i]
+					selected = true
 			end
 		-- quadrant 3
 		elseif newx < 0 and newy < 0 then
 			if players[i].currentPosition.x < initialx and 
-				players[i].currentPosition.x > newx and
+				players[i].currentPosition.x > initialx - newx and
 				players[i].currentPosition.y < initialy and
-				players[i].currentPosition.y > newy then
+				players[i].currentPosition.y > initialy - newy then
 					insidelen = insidelen + 1
 					arrInside[insidelen] = players[i]
+					selected = true
 			end
 		-- quadrant 4
 		elseif newx < 0 and newy > 0 then
 			if players[i].currentPosition.x < initialx and 
-				players[i].currentPosition.x > newx and
+				players[i].currentPosition.x > initialx - newx and
 				players[i].currentPosition.y > initialy and
-				players[i].currentPosition.y < newy then
+				players[i].currentPosition.y < initaily + newy then
 					insidelen = insidelen + 1
 					arrInside[insidelen] = players[i]
+					selected = true
 			end
 		end
 	end
