@@ -38,6 +38,7 @@ end
 function basicmove(gbI)
 	oldwaypoint = waypoint
 	print(players[gbI])
+	print("index " .. gbI)
 	waypoint = players[gbI]:lastClicked()
 	-- Subtract previous vector
 	g,h = players[gbI].currentPosition.x, players[gbI].currentPosition.y

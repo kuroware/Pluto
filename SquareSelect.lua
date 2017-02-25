@@ -31,8 +31,10 @@ insidelen = 0
 -- deals with initialx, initialy, newx, newy
 function DotsinRect()
 	selected = false
-	for index, dot in pairs(arrInside) do
+	for index, dot in pairs(players) do
 		-- quadrant 1
+		print(players[index].currentPosition.x > initialx)
+		print(newx, newy)
 		if newx > 0 and newy > 0 then
 			if players[index].currentPosition.x > initialx and 
 				players[index].currentPosition.x < initialx + newx and
@@ -41,6 +43,7 @@ function DotsinRect()
 					insidelen = insidelen + 1
 					arrInside[insidelen] = players[index]
 					selected = true
+					print("q1")
 			end
 		-- quadrant 2
 		elseif newx > 0 and newy < 0 then
